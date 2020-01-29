@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+	<title>Sign up facundo farm & resort</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<head>
+		<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+		<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+		<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+		<script src="jquery/jquery.min.js"></script>
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/style.css">
+		<script src="js/bootstrap.min.js"></script>
+		<link rel="icon" href="images/icon.png" type="image/x-icon" />
+		<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+		<style type="text/css">
+			body {background-color:#eee;}
+			.container-fluid {padding:50px;}
+			.container{background-color:white;padding:50px;   }
+			#title{font-family: 'Lobster', cursive;;}
+		</style>
+	</head>
+	<body>
+	<div class="container-fluid">
+		<div class="container">
+			<h2 class="text-center" id="title">GamerZ</h2>
+ 			<hr>
+			<div class="row">
+				<div class="col-md-5">
+ 					<form role="form" method="POST" action="{{url_for('sign_up')}}">
+						<fieldset>							
+							<p class="text-uppercase pull-center"> change info</p>	
+ 							<div class="form-group">
+								<input placeholder= "change Nick Name/ User Name"type="text" name="Nick_Name" id="Nick_Name" class="form-control input-lg">
+							</div>
+							<div class="form-group">
+								<input placeholder=" change Password" type="text" name="password" id="password" class="form-control input-lg" >
+							<br>
+							<div class="form-group">
+								<input placeholder=" change Country" type="text" name="country" id="Country" class="form-control input-lg" >
+							</div>
+							<div class="form-group">
+								<input placeholder=" change the hours in a day that you play" type="text" name="Game_hour_day" id="GAME_hours_day" class="form-control input-lg" > 
+							</div>
+
+							<div class="form-group">
+								<input placeholder=" change the Game that you want to play with others" type="text" name="Game_name" id="Game_name" class="form-control input-lg" >
+							</div>
+							<br>
+ 							<div>
+ 								<input type="submit" class="btn btn-lg btn-primary" value="Change info">
+ 							</div>
+						</fieldset>
+					</form>
+				</div>
+		</div>
+	</div>
+	</body>
+	 
+
+</html>

@@ -1,12 +1,146 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
-<form class="form-inline md-form mr-auto mb-4">
-  <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-  <button class="btn aqua-gradient btn-rounded btn-sm my-0" type="submit">Search</button>
-</form>
-</body>
+<html lang="en">
+	<title>W3.CSS Template</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<head>
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+		<!-- Bootstrap core CSS -->
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+		<!-- Material Design Bootstrap -->
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.11.0/css/mdb.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='home.css') }}">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+		<style>
+			body {font-family: "Lato", sans-serif}
+			.mySlides {display: none}
+		</style>
+	<body>
+
+	<!-- Navbar -->
+		<div class="w3-top">
+			<div class="w3-bar w3-black w3-card">
+				<a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+				<a href="{{ url_for('home')}}" class="w3-bar-item w3-button w3-padding-large">HOME</a>
+				<a href="{{ url_for('change_info')}}" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Profile</a>
+				<a href="{{ url_for('Chats')}}" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Chat</a>
+			</div>
+		</div>
+	<!-- /Navbar -->
+
+	  <!-- Automatic Slideshow Images -->
+		<div class="mySlides w3-display-container w3-center">
+			<img src="{{url_for('static',filename= 'Gamez1.jpg')}}" style="height:50%; ">
+			<div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+				<h3>GamerZ</h3>
+				<p style="color: red"><b>When YOU want to be more then "YourSelf</b></p>   
+			</div>
+		</div>
+		<div class="mySlides w3-display-container w3-center">
+			<img src="{{url_for('static',filename= 'Gamerz2.jpg')}}" style="height: 50%;">
+			<div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+				<h3>GamerZ-Statistics</h3>
+				<h4 style="color: #2F4F4F"><b>COMING SOON</b></h4>      
+			</div>
+		</div>
+		<div class="mySlides w3-display-container w3-center">
+			<img src="{{url_for('static',filename= 'Gamerz3.jpg')}}" style="height: 50%">
+			<div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+				<h3>GamerZ- Game of the week??</h3>
+				<h4><b>Coming Soon?!</b></h4>     
+			</div>
+		</div>
+		<div class="mySlides w3-display-container w3-center">
+	    <img src="{{url_for('static',filename= 'Gamez4.jpg')}}" style="height: 50%">
+			<div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+				<h3>GamerZ</h3>
+	    		<p style="color: red"><b>When YOU want to be more then "YourSelf</b></p>   
+	    	</div>
+		</div>
+	  <!-- /Automatic Slideshow Images -->
+
+	   <!-- search botten -->	
+	   <div class="container">
+	   		<div class="row">
+	   			<div class="col-4 mx-auto">
+					<form class="form-inline md-form mx-auto mb-4" method="POST" action="/home">
+				  		<input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="Game_name">
+				  		<button class="trigger_popup_fricc" class="btn aqua-gradient btn-rounded btn-sm my-0" type="submit">Search</button>
+					</form>
+				</div>
+			</div>
+		</div>
+				
+	   <!-- /search botten -->
+	   <!-- pop up-->
+		<div class="hover_bkgr_fricc">
+			<span class="helper"></span>
+			<div>
+				<div class="popupCloseButton">&times;</div>
+				{% for Profile in Suitable_profiles%}
+					<script type="text/javascript">var showPopup = true</script>
+					<h1>{{Profile.Nick_name}}</h1>
+					<br>
+					<h2>Country:</h2>
+					<h3>{{Profile.Country}}</h3>
+					<br>
+					<form methods="POST" action="/send_message"><input type="hidden" name="P_ID">{{Profile.User_id}}</form>
+					<h2>Hours he usually plays:</h2>
+					<h3>{{Profile.GAME_hours_day}}</h3>
+					<br>
+					<button class="btn aqua-gradient btn-rounded btn-sm my-0" type="submit" >Let's Play</button>
+					<br><br><br>
+				{% endfor %}
+			</div>
+		</div>
+		 <!-- /pop up-->
+
+
+
+	<!-- Footer -->
+		<footer class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge">
+			<p class="w3-medium">Made BY: Amit Perelmuter             Thanks: MEET program</a></p>
+	    </footer>
+	<!-- /Footer -->
+		<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+		<script>
+	// Automatic Slideshow - change image every 4 seconds
+			var myIndex = 0;
+			carousel();
+
+			function carousel() {
+			  var i;
+			  var x = document.getElementsByClassName("mySlides");
+			  for (i = 0; i < x.length; i++) {
+			    x[i].style.display = "none";  
+			  }
+			  myIndex++;
+			  if (myIndex > x.length) {myIndex = 1}    
+			  x[myIndex-1].style.display = "block";  
+			  setTimeout(carousel, 4000);    
+			  }
+
+
+			  // pop up script
+			
+					if (showPopup== true) {
+						$('.hover_bkgr_fricc').show();
+					}
+					$('.hover_bkgr_fricc').click(function(){
+						$('.hover_bkgr_fricc').hide();
+					});
+					$('.popupCloseButton').click(function(){
+						$('.hover_bkgr_fricc').hide();
+					});
+			
+		</script>
+	</body>
 </html>
