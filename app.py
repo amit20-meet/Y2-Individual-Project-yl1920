@@ -75,11 +75,11 @@ def sign_up():
 def home():
 
 	t=query_all_profiles(create_session())
-	# h=query_all_massage_chat(create_session())
+	h=query_all_massage_chat(create_session())
 	g=query_all_Games(create_session())
 	f=query_all_Fav(create_session())
 	print(t)
-	# print(h)
+	print(h)
 	print(g)
 	print(f)
 	Suitable_profiles = []
@@ -117,14 +117,15 @@ def change_info():
 			return render_template("/home")
 	return render_template("change.html")
 
-@app.route('/send_message', methods=['GET', 'POST'])
+'''@app.route('/send_message')
 def send_message():
 	global User_id 
-	if request.method == 'POST':
-		massage_w = "Let's play"
-		profile_that_send = User_id
-		Profile_that_get = request.form['P_ID']
-		Send_massage(create_session(), massage_w, profile_that_send, Profile_that_get)
+	print("work")
+	massage_w = "Let's play"
+	profile_that_send = User_id
+	Profile_that_get = Suitable_profiles.User_id
+	Send_massage(create_session(), massage_w, profile_that_send, Profile_that_get)
+	return render_template("/home")'''
 
 
 
