@@ -73,13 +73,13 @@ def query_all_Fav(session):
 		Profile_Game).all()
 	return fav
 
-def Create_a_Chat(session):
+'''def Create_a_Chat(session):
 	declarative_base = Chats_priv(
 		personal_id = personal_id,
 		Prof_id = Prof_id)
 	session.add(declarative_base)
 	print("added")
-	session.commit()
+	session.commit()'''
 
 
 
@@ -117,11 +117,9 @@ def search(session, G):
 
 
 def Chating (session, User_id):
-	massage_U_S = session.query(Massage).filter_by(profile_that_send = User_id).all()
-	id_sended = massage_U_S.Profile_that_get
 	massage_U_G = session.query(Massage).filter_by(Profile_that_get = User_id).all()
 	id_got = massage_U_G.profile_that_send
-	Chats = session.query(Profile).filter(or_(User_id == id_got, User_id == id_sended)).all()
+	Chats = session.query(Profile).filter_by(User_id = id_got,).all()
 	return Chats
 
 def sign_in(session, U, P):

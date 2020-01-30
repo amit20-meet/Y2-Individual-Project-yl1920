@@ -8,7 +8,6 @@ app.config['SECRET_KEY'] = 'super-secret-key'
 #### Code here ######
 
 
-
 @app.route('/' , methods=['GET', 'POST'])
 def login_sign_up():
 	global User_id
@@ -32,6 +31,8 @@ def login_sign_up():
 		return render_template("home.html")'''
 	return render_template("login.html")
 
+
+
 @app.route('/login' , methods=['GET', 'POST'])
 def login():
 	global User_id
@@ -44,6 +45,7 @@ def login():
 		else:
 			return redirect("/home")
 	return render_template("login.html")
+
 
 
 @app.route('/sign_up' , methods=['GET', 'POST'])
@@ -70,18 +72,17 @@ def sign_up():
 	return render_template("login.html")
 
 
-
 @app.route('/home', methods=['GET','POST'])
 def home():
 
-	t=query_all_profiles(create_session())
+	'''t=query_all_profiles(create_session())
 	h=query_all_massage_chat(create_session())
 	g=query_all_Games(create_session())
 	f=query_all_Fav(create_session())
 	print(t)
 	print(h)
 	print(g)
-	print(f)
+	print(f)'''
 	Suitable_profiles = []
 	if request.method == 'POST':
 		G = request.form['Game_name']
@@ -89,12 +90,6 @@ def home():
 
 	return render_template("home.html", Suitable_profiles = Suitable_profiles)
 
-@app.route('/Chats')
-def Chats():
-	global User_id
-	Chats =Chating(create_session(),User_id)
-
-	return render_template("Chats.html", Chats)
 
 	
 
@@ -117,6 +112,8 @@ def change_info():
 			return render_template("/home")
 	return render_template("change.html")
 
+
+
 '''@app.route('/send_message')
 def send_message():
 	global User_id 
@@ -128,7 +125,12 @@ def send_message():
 	return render_template("/home")'''
 
 
+'''@app.route('/Chats')
+def Chats():
+	global User_id
+	Chats =Chating(create_session(),User_id)
 
+	return render_template("Chats.html", Chats)'''
 #####################
 
 if __name__ == '__main__':
